@@ -1,0 +1,24 @@
+<h2>Reports</h2>
+
+<% if @reports.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reports.each do |report| %>
+        <tr>
+          <td>
+            <%= report.book_name %>
+          </td>
+          <td>
+            <%= report.users %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -1,0 +1,23 @@
+<%= form_for @book do |f| %>
+  <div class="field">
+    <%= f.label :name %> <br>
+    <%= f.text_field :name %>
+  </div> <br>
+  <div class="field">
+    <%= f.label :description %> <br>
+    <%= f.text_area :description %>
+  </div> <br>
+  <div class="field">
+    <%= f.label :authors %> <br>
+    <%= f.select :authors, @authors.map { |a| [a.name, a.id] }, {}, multiple: true, style: "width: 12rem"  %>
+    <div style="font-size: 0.5rem; color: blue;">*Multiselect Authors with CTRL button</div>
+  </div> <br>
+  <div class="field">
+    <%= f.label :category %> <br>
+    <%= f.select :category, @categories.map { |c| [c.name, c.id] }, {}, style: "width: 12rem"  %>
+    <% if @categories.size < 1 %>
+      <div style="font-size: 0.5rem; color: red;">*Admin is requested to create categories first</div>
+    <% end %>
+  </div> <br>
+  <%= f.submit %>
+<% end %>

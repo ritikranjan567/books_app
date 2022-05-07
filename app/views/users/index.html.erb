@@ -1,0 +1,25 @@
+<h2>List of Users</h2>
+<%= link_to  "+ New User", new_user_path %>
+<br><br>
+
+<% if @users.size > 0 %>
+  <table>
+    <thead>
+      <tr>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td> <%= user.email %> </td>
+          <td> <%= user.role %> </td>
+          <td> <%= link_to  "Delete", user_path(user.id), method: :delete %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+

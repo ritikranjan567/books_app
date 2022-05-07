@@ -1,0 +1,23 @@
+<h2>My Favorites</h2>
+<% if @books.size > 0 %>
+  <table>
+    <thead>
+      <tr><th>Name</th>
+      <th>Description</th>
+      <th>Authors</th>
+      <th>Actions</th><tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td> <%= book.name %> </td>
+          <td> <%= book.description %> </td>
+          <td><%= book.authors.map{ |author| author.name }.join(',') %></td>
+          <td>
+            <%= link_to  "Remove", "/books/#{book.id}/remove_from_fav", method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
